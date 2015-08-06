@@ -152,7 +152,7 @@ def get_connection (s3_path):
   
     s3 = boto.connect_s3()
     s3 = boto.connect_s3(calling_format=OrdinaryCallingFormat())
-    bucket = s3.lookup(split_rs.netloc)
+    bucket = s3.lookup(split_rs.netloc, validate=False)
     if bucket == None:
         raise ValueError("'%s' is not a valid bucket" % split_rs.netloc)
     key = bucket.get_key(split_rs.path)
